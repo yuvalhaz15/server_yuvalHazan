@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }}<h1 class="second_title"> Users page</h1>
+{% endblock %}
+{% block tohen %}
+    <div class="hobbies_container">
+    <form action="/assignment3_2" method="get">
+        <input type="text" name="name" placeholder="Name">
+        <input type="email" name="email" placeholder="exm@gmail.com">
+        <input type="text" name="user_name" placeholder="User Name">
+        <input type="submit" value="search">
+    </form>
+    {% if users %}
+        <h1> Users List </h1>
+            {% for k, v in users.items() %}
+                <li>Name:{{ v['name'] }} &nbsp Email:{{ v['email'] }}  &nbsp  User Name:{{ v['user_name']}} </li>
+            {% endfor %}
+
+        {% else %}
+            <h2 class="no_hobbies_massage">{{ no_hobbies_message |upper }}</h2>
+        {% endif %}
+    </div>
+{% endblock %}

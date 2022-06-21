@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+      {% include('header.html') %}
      {% block title %}<h1 class="all_pages_main_title">Welcome to Yuval's site</h1>{% endblock %}
     {% include('backgroundImage.html') %}
     {% include('styles.html')%}
@@ -9,7 +10,7 @@
 </head>
 <body>
 
-    {% include('header.html') %}
+
     {% block tohen %}
             <h1>Message from BASE Page!</h1>
     {% endblock %}
