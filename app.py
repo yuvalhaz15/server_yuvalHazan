@@ -27,11 +27,10 @@ def display_conact_us():  # put application's code here
 
 @app.route('/assignment3_1')
 def display_hobbies_page():
-    my_hobbies = ('swimming','crossfit', 'playing music')
+    my_hobbies = ('swimming', 'crossfit', 'playing music')
     return render_template('assignment3_1.html',
                            hobbies_dic=my_hobbies,
-                           no_hobbies_message='no hobbies to display' )
-
+                           no_hobbies_message='no hobbies to display')
 
 
 # @app.route('/open_users')
@@ -40,14 +39,14 @@ def display_hobbies_page():
 
 
 users = {
-     "user1": {"name": "Edinson", "email": "Cavani@gmail.com", "user_name": "El metador" },
+    "user1": {"name": "Edinson", "email": "Cavani@gmail.com", "user_name": "El matador"},
     "user2": {"name": "Cristiano", "email": "CR7@gmail.com", "user_name": "CR7"},
     "user3": {"name": "Bruno", "email": "Bruno@gmail.com", "user_name": "BR"},
     "user4": {"name": "Messi", "email": "Messi@gmail.com", "user_name": "The flea"},
     "user5": {"name": "Kobe", "email": "kobe@gmail.com", "user_name": "The black mamba"}
 }
-user_data= {
-    'El metador': '1234',
+user_data = {
+    'El matador': '1234',
     'CR7': '1235',
     'BR': '1236',
     'The flea': '1237',
@@ -74,26 +73,27 @@ def display_users_page():  # put application's code here
         else:
             return render_template('assignment3_2.html',
                                    message='Please sign in!')
-
-    if 'name' in request.args:
-        name = request.args["name"]
-        if name == '':
-            return render_template('assignment3_2.html',users=users)
-        details = None
-        for user_name in users.values():
-            if user_name['name'] == name:
-                details = user_name
-                break
-        if details:
-            return render_template('assignment3_2.html',
-                                   name=details['name'],
-                                   email=details['email'],
-                                   user_name=details['user_name'])
-        else:
-            return render_template('assignment3_2.html',
-                                   message2='No user found, sorry about that')
-    return render_template('assignment3_2.html',
-                           users=users)
+    else:
+        if 'name' in request.args:
+            name = request.args["name"]
+            if name == '':
+                return render_template('assignment3_2.html', users=users)
+            details = None
+            for user_name in users.values():
+                if user_name['name'] == name:
+                    details = user_name
+                    break
+            if details:
+                return render_template('assignment3_2.html',
+                                       name=details['name'],
+                                       email=details['email'],
+                                       user_name=details['user_name']
+                                        )
+            else:
+                return render_template('assignment3_2.html',
+                                       no_user_message='No user found')
+        return render_template('assignment3_2.html'
+                               )
 
 
 if __name__ == '__main__':
