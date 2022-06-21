@@ -1,38 +1,24 @@
 {% extends 'base.html' %}
 
-{% block title %}Hobbies{% endblock %}
+{% block title %}
+{{ super() }}
+ <h1 class="second_title"> Hobbies</h1>
 
+{% endblock %}
 {% block tohen %}
-<div class="hobbies_container">
-<h1>My hobbies</h1>
+    <div class="hobbies_container">
+        {% block header %}
+            <h1>My hobbies</h1>
+        {% endblock %}
+        {% if hobbies_dic %}
+            <ol>
+                {% for hobbie in hobbies_dic |sort %}
+                    <li><h2 class="hobbies_name">Hobbie: {{ hobbie }}.</h2></li>
+                {% endfor %}
+            </ol>
 
-{#    <form action="/catalog">#}
-{#        <input type="text" name="product_name" placeholder="Product Name">#}
-{#        <input type="text" name="product_color" placeholder="Color">#}
-{#        <input type="text" name="product_size" placeholder="Size">#}
-{#        <input type="submit" value="Find">#}
-{#    </form>#}
-{##}
-{#    {% if product_name %}#}
-{#        <h2>{{ product_name }}</h2>#}
-{#        <h3>Price: {{ product_price }}</h3>#}
-{#        <h3>Color: {{ product_color }}</h3>#}
-{#        <h3>Size: {{ product_size }}</h3>#}
-{#    {% endif %}#}
-{##}
-{#    {% if message %}#}
-{#        <h3 style="color: red">{{ message }}</h3>#}
-{#    {% endif %}#}
-
-    {% if hobbies_dic %}
-        <ol>
-            {% for hobbie in hobbies_dic |sort%}
-                <li><h2 class="hobbies_name">Hobbie: {{ hobbie }}.</h2></li>
-            {% endfor %}
-        </ol>
-
-     {% else %}
-        <h2 class="no_hobbies_massage">{{no_hobbies_message |upper }}</h2>
-    {% endif %}
-</div>
+        {% else %}
+            <h2 class="no_hobbies_massage">{{ no_hobbies_message |upper }}</h2>
+        {% endif %}
+    </div>
 {% endblock %}

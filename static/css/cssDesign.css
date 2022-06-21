@@ -105,6 +105,19 @@ transition-timing-function: ease;
 grid-area: Main;
 
 }
+.all_pages_main_title{
+      font-size: 30px;
+    text-align: center;
+
+
+}
+.second_title{
+      font-size: 20px;
+    text-align: center;
+
+
+
+}
 @keyframes welcomeTitle {
     from {font-size: 0;}
     to{font-size: 30;}
