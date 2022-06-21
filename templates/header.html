@@ -1,0 +1,11 @@
+<header>
+    <a href="/">Home Page</a> |
+    <a href="/conact">Conact Us</a> |
+    <a href="/assignment3_1">Hobbies</a> |
+    {% if session['logedin'] %}
+        <a href="/log_out">Log Out</a>
+    {% else %}
+        <a href="/log_in">Log In</a>
+    {% endif %} |
+    <a href="/users">Users</a>
+</header>
