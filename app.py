@@ -33,9 +33,6 @@ def display_hobbies_page():
                            no_hobbies_message='no hobbies to display')
 
 
-# @app.route('/open_users')
-# def open_users_page():
-#     render_template('assignment3_2.html')
 
 
 users = {
@@ -57,16 +54,16 @@ user_data = {
 @app.route('/assignment3_2', methods=['GET', 'POST'])
 def display_users_page():  # put application's code here
     if request.method == 'POST':
-        username = request.form['username']
+        user_name = request.form['user_name']
         password = request.form['password']
-        if username in user_data:
-            user_password = user_data[username]
+        if user_name in user_data:
+            user_password = user_data[user_name]
             if user_password == password:
-                session['username'] = username
-                session['logedin'] = True
+                session['user_name'] = user_name
+                session['loged_in'] = True
                 return render_template('assignment3_2.html',
-                                       message='Success',
-                                       username=username)
+                                       message='Hello',
+                                       user_name=user_name)
             else:
                 return render_template('assignment3_2.html',
                                        message='Incorrect password!')
@@ -95,6 +92,16 @@ def display_users_page():  # put application's code here
         return render_template('assignment3_2.html'
                                )
 
+@app.route('/log_out')
+def logout_func():
+    session['loged_in'] = False
+    session.clear()
+    return redirect(url_for('display_users_page'))
+
+
+@app.route('/session')
+def session_func():
+    return jsonify(dict(session))
 
 if __name__ == '__main__':
     app.run()

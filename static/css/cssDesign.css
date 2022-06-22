@@ -118,6 +118,18 @@ grid-area: Main;
 
 
 }
+h1.register_form{
+    font-size: 20px;
+    text-align: center;
+   color: red;
+}
+.register_message{
+
+    font-size: 30px;
+    text-align: center;
+   color: red;
+
+}
 @keyframes welcomeTitle {
     from {font-size: 0;}
     to{font-size: 30;}
